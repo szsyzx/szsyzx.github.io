@@ -1,0 +1,409 @@
+/* 修改图片圆角 */
+img[src*="#img-radius"] {
+    border-radius: 9px;
+}
+/* 版权圆角 */
+#post .post-copyright {
+    border-radius: 30px;
+}
+/* 侧边栏圆角 */
+#aside-content .card-widget {
+border-radius: 25px;
+}
+/* 文章页圆角 */
+.layout>div:first-child:not(.recent-posts) {
+border-radius: 25px;
+}
+/* 双栏卡片圆角 */
+#recent-posts>.recent-post-item {
+border-radius: 25px;
+}
+/* github按钮圆角 */
+#card-info-btn{
+  border-radius: 25px;
+  overflow: hidden}
+#card-info-btn:before{
+  border-radius: 25px
+}
+/* 右侧小按钮圆角 */
+#rightside>div>button,#to_comment {
+  margin-right: 4px;
+  border-radius: 5px;
+}
+/* 翻页圆角 */
+#pagination a.extend,
+#pagination .page-number,
+#pagination span {
+	color: var(--font-color);
+	background-color: var(--card-bg);
+	border-radius: 8px;
+	height: 1.6rem;
+	text-align: center;
+	line-height: 1.6rem;
+	display: inline-block;
+	min-width: 1.6rem;
+}
+/* 目录圆角 */
+#aside-content #card-toc .toc-content .toc-link.active {
+    border-radius: 8px;
+}
+/* 上下一篇圆角 */
+#pagination.pagination-post {
+  border-radius: 25px;
+}
+/* 相关推荐圆角 */
+.relatedPosts>.relatedPosts-list>div {
+  border-radius: 25px;
+}
+/* 导航栏居中 */
+#navFn{
+flex: 1;
+text-align: right;
+}
+#nav
+  #search-button{
+    display: inline;
+    padding: 0 0 0 0.3rem ;
+    position: relative;
+    padding-bottom: 0.3rem;
+    text-shadow: 0.05rem 0.05rem 0.1rem rgb(0 0 0 / 30%);
+    cursor: pointer;
+}
+/* 导航栏置顶透明覆盖 */
+#page-header.not-top-img #nav {
+    background: rgba(255,255,255,0);
+    -webkit-box-shadow: 0 5px 6px -5px rgba(133,133,133,0);
+    box-shadow: 0 5px 6px -5px rgba(133,133,133,0)
+}
+/* 导航栏非置顶透明覆盖 */
+#page-header.nav-fixed #nav {
+ background: rgba(255,255,255,.8);
+    -webkit-box-shadow: 0 5px 6px -5px rgba(133,133,133,.6);
+    box-shadow: 0 5px 6px -5px rgba(133,133,133,.6);
+}
+/* 横向排布子菜单 */
+#nav .menus_items .menus_item .menus_item_child li {
+  display: inline-block;
+}
+/* 圆角隐藏 */
+ul.menus_item_child {
+  overflow: hidden;
+  border-radius: 5px;
+}
+/* 调整空隙，确保不会天下武功唯快不破 */
+#nav .menus_items .menus_item .menus_item_child {
+  margin-top: 0px !important;
+}
+#nav .menus_items .menus_item .menus_item_child li {
+  z-index: 2;
+  border-radius: 10px;
+  display: inline-flex;
+  overflow: hidden;
+}
+/* 二级菜单样式 */
+#nav .menus_items .menus_item .menus_item_child {
+  padding: 6px 8px 8px 8px;
+  border-radius: 12px;
+  -webkit-box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+	-moz-box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+	box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+}
+/*阿里图标库*/
+svg.icon {
+   width: 1em; height: 1em;
+   /* width和height定义图标的默认宽度和高度*/
+   vertical-align: -0.15em;
+   fill: currentColor;
+   overflow: hidden;
+   font-size: 20px;
+}
+/* 页脚footer */
+/* 渐变色滚动动画 */
+@-webkit-keyframes Gradient {
+    0% {
+        background-position: 0 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0 50%;
+    }
+}
+
+@-moz-keyframes Gradient {
+    0% {
+        background-position: 0 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0 50%;
+    }
+}
+
+@keyframes Gradient {
+    0% {
+        background-position: 0 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0 50%;
+    }
+}
+#footer {
+    background: linear-gradient(-45deg, #ee7752, #ce3e75, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    -webkit-animation: Gradient 10s ease infinite;
+    -moz-animation: Gradient 10s ease infinite;
+    animation: Gradient 10s ease infinite;
+    -o-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+#footer:before {
+    background-color: rgba(0, 0, 0, 0);
+}
+/* 滚动条 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: rgba(153,204,153, 0.2);
+  border-radius: 2em;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #99CC99;
+  background-image: -webkit-linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.4) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0.4) 75%,
+    transparent 75%,
+    transparent
+  );
+  border-radius: 2em;
+}
+
+::-webkit-scrollbar-corner {
+  background-color: transparent;
+}
+
+::-moz-selection {
+  color: #fff;
+  background-color: #99CC99;
+}
+/* 文章标题居中 */
+#page h1.page-title,#post>#post-info {
+    text-align: center
+}
+/* 以下透明度设置 */
+#content-inner {
+    --light_bg_color: hsla(0,0%,100%,0.6);
+    --dark_bg_color: rgba(18,18,18,0.8);
+    --light_page_color: hsla(0,0%,100%,0.5);
+    --dark_page_color: rgba(18,18,18,0.8);
+    --light_link-bg: rgba(237,240,247,0.46);
+    --dark_link-bg: rgba(237,240,247,0.05);
+    --light_copyright-bg: rgb(255, 255, 255);
+    --dark_copyright-bg: rgba(237,240,247,0.05);
+}
+/* 文章页及首页卡片透明 */
+#recent-posts>.recent-post-item,.layout>div:first-child:not(.recent-posts),.layout_post>#page,.layout_post>#post,.read-mode .layout_post>#post {
+    background: var(--light_page_color)
+}
+/* 侧边栏透明 */
+#aside-content .card-widget {
+    background: var(--light_bg_color)
+}
+/*侧边栏深色页面透明 */
+[data-theme=dark] #aside-content .card-widget {
+    background: var(--dark_bg_color)
+}
+/*首页深色页面透明 */
+[data-theme=dark] #recent-posts>.recent-post-item,[data-theme=dark] .layout>div:first-child:not(.recent-posts),[data-theme=dark] .layout_post>#page,[data-theme=dark] .layout_post>#post,[data-theme=dark] .read-mode .layout_post>#post {
+    background: var(--dark_page_color)
+}
+/*友链边框 */
+#article-container .flink .flink-list>.flink-list-item {
+    background: var(--light_link-bg)
+}
+/*友链深色页面边框 */
+[data-theme=dark] #article-container .flink .flink-list>.flink-list-item {
+    background: var(--dark_link-bg)
+}
+/*版权页面浅色 */
+#post .post-copyright {
+    background: var(--light_copyright-bg)
+}
+/*版权页面深色 */
+[data-theme=dark] #post .post-copyright {
+    background: var(--dark_copyright-bg)
+}
+/*字体*/
+@font-face{
+  font-family:'aqqxs' ;  /* 字体名自定义即可 */
+  src:url('https://unpkg.zhimg.com/static-sianx@1.0.6/ZhuZiAWan1.woff2'); /* 字体文件路径 */
+  font-display : swap;
+}
+
+a.article-title {
+  font-family: 'aqqxs', sans-serif;
+}
+.content {
+  font-family: 'aqqxs', sans-serif;
+}
+.article-meta-wrap {
+  font-family: 'aqqxs', sans-serif;
+}
+div#bbtalk {
+  font-family: 'aqqxs', sans-serif;
+}
+a#site-name {
+  font-family: 'aqqxs', sans-serif;
+}
+.card-info-avatar.is-center {
+  font-family: 'aqqxs', sans-serif;
+}
+p {
+  font-family: 'aqqxs', sans-serif;
+}
+.card-widget.card-tags {
+  font-family: 'aqqxs', sans-serif;
+}
+.card-widget.card-webinfo {
+  font-family: 'aqqxs', sans-serif;
+}
+element.style {
+  font-family: 'aqqxs', sans-serif;
+}
+.aplayer-music {
+  font-family: 'aqqxs', sans-serif;
+}
+div#hopelight_plus_menu {
+  font-family: 'aqqxs', sans-serif;
+}
+div#menus {
+  font-family: 'aqqxs', sans-serif;
+}
+div#local-search-title {
+  font-family: 'aqqxs', sans-serif;
+}
+input.local-search-box--input {
+  font-family: 'aqqxs', sans-serif;
+}
+div#post-info {
+  font-family: 'aqqxs', sans-serif;
+}
+.post-copyright {
+  font-family: 'aqqxs', sans-serif;
+}
+.sticky_layout {
+  font-family: 'aqqxs', sans-serif;
+}
+.search-dialog {
+  font-family: 'aqqxs', sans-serif;
+}
+main#content-inner {
+  font-family: 'aqqxs', sans-serif;
+}
+p {
+  font-family: 'aqqxs', sans-serif !important;
+}
+#footer-wrap {
+  font-family: 'aqqxs', sans-serif;    /* 手机侧边栏 */
+}
+#sidebar #sidebar-menus.open {
+  font-family: 'aqqxs', sans-serif;    /* 页脚 */
+}
+#search-button{
+      font-family: 'aqqxs', sans-serif; /* 搜索 */
+}
+#article-container code,#article-container pre {
+  font-family: 'aqqxs', sans-serif !important; /* code标签以及代码块 */
+}
+/* 双栏卡片主页文章*/
+#recent-posts{
+	margin-top:-1rem;  /*头部为空时抵消间隔，若有磁贴或日历请注释掉该行*/
+	align-content:flex-start;
+	display: flex;
+    flex-wrap: wrap; /*规定灵活的项目在必要的时候拆行或拆列。*/
+    justify-content: space-between; /*。*/
+}
+#recent-posts > .recent-post-item {
+  /*max-height:324px;*/  /*文章容器最大高度*/
+  margin-top: 1rem; /*最小间距*/
+  display: inline-block;
+  height:auto; /*高度自动*/
+  width:49%;/*文章容器容器宽度*/
+}
+#recent-posts > .recent-post-item .post_cover {
+  width: 100%; /*图片封面宽度*/
+    height: 200px;/*图片封面高度*/
+}
+#recent-posts > .recent-post-item .post_cover img.post_bg {
+  width: 100%;/*图片宽度*/
+  height: 100%;/*图片高度*/
+}
+
+
+#recent-posts > .recent-post-item >.recent-post-info > .content {
+display:none;/*隐藏文章详情*/
+}
+#recent-posts > .recent-post-item {
+
+  -webkit-flex-direction: column; /*容器内部纵向排列*/
+  -ms-flex-direction: column; /*容器内部纵向排列*/
+  flex-direction: column; /*容器内部纵向排列*/
+
+}
+#recent-posts > .recent-post-item .left_radius {
+    border-radius: 25px 25px 0 0;/*圆角修改*/
+}
+#recent-posts > .recent-post-item .right_radius {
+    border-radius: 25px 25px 0 0;/*圆角修改*/
+}
+.recent-post-item{
+	height:auto !important;/*容器高度自动*/
+}
+
+.recent-post-info {
+  
+  padding: 0 40px;/*容器内部文字左右间距*/
+  margin-top: 1em;/*容器内部文字上间距*/
+  width: 100%!important;/*容器宽度*/
+}
+#recent-posts > .recent-post-item > .recent-post-info > .article-title {
+    -webkit-line-clamp: 1;/*控制标题的行数*/
+    margin-top: 0.3rem; /*控制标题的上间距*/
+	margin-bottom: 0.3rem;/*控制标题的下间距*/
+    color: var(--text-highlight-color);
+    font-size: 1.2em; /*控制标题的字体大小*/
+    line-height: 1.4;/*控制标题的行高*/
+ 
+}
+#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap {
+	margin-bottom: 1rem;/*控制标题meta信息的底部间距*/
+}
+@media screen and (max-width: 768px) {
+#recent-posts > .recent-post-item {
+ width:100%;/*控制手机自适应*/
+}
