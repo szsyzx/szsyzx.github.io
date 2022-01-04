@@ -4,6 +4,56 @@
   
     
     <entry>
+      <title>Oracle Cloud 技术支持</title>
+      <link href="/posts/5804/"/>
+      <url>/posts/5804/</url>
+      
+        <content type="html"><![CDATA[<div class="note blue icon simple"><i class="note-icon fas fa-bullhorn"></i><p>您好，个人用户在免费云注册和使用的过程中遇到任何问题，我们有专门的咨询渠道。</p></div><h2 id="您如果在免费云注册和使用的过程中遇到任何问题，请您以以上三个渠道的答复或者指引为准。"><a href="#您如果在免费云注册和使用的过程中遇到任何问题，请您以以上三个渠道的答复或者指引为准。" class="headerlink" title="您如果在免费云注册和使用的过程中遇到任何问题，请您以以上三个渠道的答复或者指引为准。"></a>您如果在免费云注册和使用的过程中遇到任何问题，请您以以上三个渠道的答复或者指引为准。</h2><p>如果您有企业试用需求，麻烦您提供您的姓名、联系电话和公司全称，我们会安排产品专家与您对接</p><div class="tip home"><p>渠道1、在线聊天支持：请您打开页面<a href="https://oc-cx-en.custhelp.com/app/chat/chat_launch">https://oc-cx-en.custhelp.com/app/chat/chat_launch</a>  ，按照页面提示填写资料后，点击提交即可开始在线聊天；</p></div><div class="tip sync"><p>渠道2、在线聊天支持：请您打开甲骨文中国官网<a href="https://www.oracle.com/cn/index.html">https://www.oracle.com/cn/index.html</a>  ，点击页面右下角橙色按钮，在弹出界面选择第二个选项：Cloud Support聊天 ，按照页面提示填写资料后，点击提交即可开始在线聊天；</p></div><div class="tip cogs"><p>渠道3、邮件支持：您可发送邮件至oraclehelp_ww@oracle.com 咨询。</p></div>]]></content>
+      
+      
+      <categories>
+          
+          <category> Oracle Cloud </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> racle Cloud </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>自定義root密码</title>
+      <link href="/posts/34948/"/>
+      <url>/posts/34948/</url>
+      
+        <content type="html"><![CDATA[<div class="tip "><p>一键获取最高root权限，自定义root密码！支持Euserv德鸡，Hax IPV6，甲骨文oracle、谷歌云gpc、亚马逊云azurz等VPS</p></div><h2 id="代码如下"><a href="#代码如下" class="headerlink" title="代码如下"></a>代码如下</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">green</span></span>()&#123;</span><br><span class="line">    <span class="built_in">echo</span> -e <span class="string">&quot;\033[32m\033[01m<span class="variable">$1</span>\033[0m&quot;</span></span><br><span class="line">&#125;</span><br><span class="line">[[ <span class="variable">$EUID</span> -ne 0 ]] &amp;&amp; su=<span class="string">&#x27;sudo&#x27;</span> </span><br><span class="line">lsattr /etc/passwd /etc/shadow &gt;/dev/null 2&gt;&amp;1</span><br><span class="line">chattr -i /etc/passwd /etc/shadow &gt;/dev/null 2&gt;&amp;1</span><br><span class="line">chattr -a /etc/passwd /etc/shadow &gt;/dev/null 2&gt;&amp;1</span><br><span class="line">lsattr /etc/passwd /etc/shadow &gt;/dev/null 2&gt;&amp;1</span><br><span class="line">prl=`grep PermitRootLogin /etc/ssh/sshd_config`</span><br><span class="line">pa=`grep PasswordAuthentication /etc/ssh/sshd_config`</span><br><span class="line"><span class="keyword">if</span> [[ -n <span class="variable">$prl</span> &amp;&amp; -n <span class="variable">$pa</span> ]]; <span class="keyword">then</span></span><br><span class="line"><span class="built_in">read</span> -p <span class="string">&quot;自定义root密码:&quot;</span> mima</span><br><span class="line"><span class="built_in">echo</span> root:<span class="variable">$mima</span> | <span class="variable">$su</span> chpasswd root</span><br><span class="line"><span class="variable">$su</span> sed -i <span class="string">&#x27;s/^#\?PermitRootLogin.*/PermitRootLogin yes/g&#x27;</span> /etc/ssh/sshd_config;</span><br><span class="line"><span class="variable">$su</span> sed -i <span class="string">&#x27;s/^#\?PasswordAuthentication.*/PasswordAuthentication yes/g&#x27;</span> /etc/ssh/sshd_config;</span><br><span class="line"><span class="variable">$su</span> service sshd restart</span><br><span class="line">green <span class="string">&quot;VPS当前用户名：root&quot;</span></span><br><span class="line">green <span class="string">&quot;vps当前root密码：<span class="variable">$mima</span>&quot;</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">red <span class="string">&quot;当前vps不支持root账户或无法自定义root密码&quot;</span> &amp;&amp; <span class="built_in">exit</span> 1</span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure><div class="tip success"><p>一键脚本：</p></div><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash &lt;(curl -sSL https://cdn.jsdelivr.net/gh/szsyzx/vps/root.sh)</span><br></pre></td></tr></table></figure><p>用户名：root，密码必须自定义。</p><p>登录SSH时，请更改原用户名为root，并输入自定义密码！</p><hr><p>提示：密码不要设置得过于简单，容易被破解。如有密钥文件要保存好，以防万一！</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>外挂标签测试图标</title>
       <link href="/posts/28584/"/>
       <url>/posts/28584/</url>
