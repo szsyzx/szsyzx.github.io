@@ -4,6 +4,56 @@
   
     
     <entry>
+      <title>Oracle Cloud必要操作</title>
+      <link href="/posts/7023/"/>
+      <url>/posts/7023/</url>
+      
+        <content type="html"><![CDATA[<p>入ROOT模式：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo -i</span><br></pre></td></tr></table></figure><h3 id="1-安装相关依赖"><a href="#1-安装相关依赖" class="headerlink" title="1.安装相关依赖"></a>1.安装相关依赖</h3><h4 id="centos系统下"><a href="#centos系统下" class="headerlink" title="centos系统下"></a>centos系统下</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum -y install wget</span><br><span class="line">yum update -y &amp;&amp; yum install curl -y</span><br></pre></td></tr></table></figure><h4 id="ubuntu系统下"><a href="#ubuntu系统下" class="headerlink" title="ubuntu系统下"></a>ubuntu系统下</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt-get install wget</span><br><span class="line">apt-get update -y &amp;&amp; apt-get install curl -y</span><br></pre></td></tr></table></figure><h3 id="2-删除、关闭、打开各自系统的无用附件、防火墙、端口及规则"><a href="#2-删除、关闭、打开各自系统的无用附件、防火墙、端口及规则" class="headerlink" title="2.删除、关闭、打开各自系统的无用附件、防火墙、端口及规则"></a>2.删除、关闭、打开各自系统的无用附件、防火墙、端口及规则</h3><p>注意Centos系统下：<br>删除多余附件</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop oracle-cloud-agent</span><br><span class="line">systemctl disable oracle-cloud-agent</span><br><span class="line">systemctl stop oracle-cloud-agent-updater</span><br><span class="line">systemctl disable oracle-cloud-agent-updater</span><br></pre></td></tr></table></figure><p>停止firewall</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop firewalld.service</span><br></pre></td></tr></table></figure><p>禁止firewall开机启动</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl disable firewalld.service</span><br></pre></td></tr></table></figure><p>注意Ubuntu系统下：<br>开放所有端口</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">iptables -P INPUT ACCEPT</span><br><span class="line">iptables -P FORWARD ACCEPT</span><br><span class="line">iptables -P OUTPUT ACCEPT</span><br><span class="line">iptables -F</span><br></pre></td></tr></table></figure><p>Ubuntu镜像默认设置了Iptable规则，关闭它</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt-get purge netfilter-persistent</span><br><span class="line">reboot</span><br></pre></td></tr></table></figure><p>或者强制删除</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf /etc/iptables &amp;&amp; reboot</span><br></pre></td></tr></table></figure><p>3.启用自带BBR加速<br>ubuntu：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo bash -c &#x27;echo &quot;net.core.default_qdisc=fq&quot; &gt;&gt; /etc/sysctl.conf&#x27;</span><br><span class="line">sudo bash -c &#x27;echo &quot;net.ipv4.tcp_congestion_control=bbr&quot; &gt;&gt; /etc/sysctl.conf&#x27;</span><br><span class="line">sysctl -p</span><br></pre></td></tr></table></figure><p>查看bbr是否开启成功</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsmod | grep bbr</span><br></pre></td></tr></table></figure><p>centnos8：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;net.core.default_qdisc=fq&quot; &gt;&gt; /etc/sysctl.conf</span><br><span class="line">echo &quot;net.ipv4.tcp_congestion_control=bbr&quot; &gt;&gt; /etc/sysctl.conf</span><br><span class="line">sysctl -p</span><br></pre></td></tr></table></figure><p>查看bbr是否开启成功</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sysctl -n net.ipv4.tcp_congestion_control</span><br><span class="line">lsmod | grep bbr</span><br></pre></td></tr></table></figure><h2 id="更新系统"><a href="#更新系统" class="headerlink" title="更新系统"></a>更新系统</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">Ubuntu系统</span></span><br><span class="line">apt update &amp;&amp; apt upgrade -y </span><br><span class="line"><span class="meta">#</span><span class="bash">Centos系统</span></span><br><span class="line">yum update -y &amp;&amp; yum upgrade -y</span><br></pre></td></tr></table></figure><h2 id="改为root密码登陆"><a href="#改为root密码登陆" class="headerlink" title="改为root密码登陆"></a>改为root密码登陆</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">BASH</span><br><span class="line">echo root:密码 |chpasswd root</span><br><span class="line">sed -i &#x27;s/^#\?PermitRootLogin.*/PermitRootLogin yes/g&#x27; /etc/ssh/sshd_config;</span><br><span class="line">sed -i &#x27;s/^#\?PasswordAuthentication.*/PasswordAuthentication yes/g&#x27; /etc/ssh/sshd_config;</span><br><span class="line">systemctl restart sshd</span><br></pre></td></tr></table></figure><h2 id="开启BBR"><a href="#开启BBR" class="headerlink" title="开启BBR"></a>开启BBR</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">BASH</span><br><span class="line"><span class="meta">#</span><span class="bash">修改系统变量</span></span><br><span class="line">echo &quot;net.core.default_qdisc=fq&quot; &gt;&gt; /etc/sysctl.conf</span><br><span class="line">echo &quot;net.ipv4.tcp_congestion_control=bbr&quot; &gt;&gt; /etc/sysctl.conf</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">保存生效</span></span><br><span class="line">sysctl -p</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">查看内核是否已开启BBR</span></span><br><span class="line">lsmod | grep bbr</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">显示如下，即成功</span></span><br><span class="line">tcp_bbr                20480  2</span><br></pre></td></tr></table></figure><h2 id="放行全部端口（重启失效）"><a href="#放行全部端口（重启失效）" class="headerlink" title="放行全部端口（重启失效）"></a>放行全部端口（重启失效）</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">BASH</span><br><span class="line">iptables -P INPUT ACCEPT</span><br><span class="line">iptables -P FORWARD ACCEPT</span><br><span class="line">iptables -P OUTPUT ACCEPT</span><br><span class="line">iptables -F</span><br><span class="line">iptables-save</span><br></pre></td></tr></table></figure><h2 id="持续化规则（重启不失效）"><a href="#持续化规则（重启不失效）" class="headerlink" title="持续化规则（重启不失效）"></a>持续化规则（重启不失效）</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">BASH</span><br><span class="line"><span class="meta">#</span><span class="bash">安装iptables-persistent</span></span><br><span class="line">apt install iptables-persistent</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">永久保存规则</span></span><br><span class="line">netfilter-persistent save</span><br><span class="line">netfilter-persistent reload</span><br></pre></td></tr></table></figure><ul><li>对于关闭防火墙更暴力点的方法，可以选择如下两种</li></ul><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">BASH</span><br><span class="line">rm -rf /etc/iptables &amp;&amp; reboot</span><br><span class="line"></span><br><span class="line">或</span><br><span class="line"></span><br><span class="line">rm -rf /etc/iptables/rules.v4</span><br><span class="line">rm -rf /etc/iptables/rules.v6</span><br><span class="line">reboot</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> Oracle Cloud </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Oracle Cloud </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Oracle Cloud 快捷登陆</title>
+      <link href="/posts/8504/"/>
+      <url>/posts/8504/</url>
+      
+        <content type="html"><![CDATA[<div class="note blue icon simple"><i class="note-icon fas fa-bullhorn"></i><p>Oracle Cloud 快捷登陆的方式</p></div><h2 id="Oracle-Cloud-快捷登陆的方式，免去你多点几步地址"><a href="#Oracle-Cloud-快捷登陆的方式，免去你多点几步地址" class="headerlink" title="Oracle Cloud 快捷登陆的方式，免去你多点几步地址"></a>Oracle Cloud 快捷登陆的方式，免去你多点几步地址</h2><p>如果您有企业试用需求，麻烦您提供您的姓名、联系电话和公司全称，我们会安排产品专家与您对接</p><div class="tip home"><p><a href="https://cloud.oracle.com/?tenant=登录名&amp;provider=OracleIdentityCloudService">https://cloud.oracle.com/?tenant=登录名&amp;provider=OracleIdentityCloudService</a></p></div>]]></content>
+      
+      
+      <categories>
+          
+          <category> Oracle Cloud </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> racle Cloud </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Oracle Cloud 技术支持</title>
       <link href="/posts/5804/"/>
       <url>/posts/5804/</url>
@@ -132,31 +182,6 @@
       <title>Oracle 云免费套餐包含哪些内容</title>
       <link href="/posts/38113/"/>
       <url>/posts/38113/</url>
-      
-        <content type="html"><![CDATA[<h2 id="Oracle-云免费套餐包含哪些内容"><a href="#Oracle-云免费套餐包含哪些内容" class="headerlink" title="Oracle 云免费套餐包含哪些内容"></a>Oracle 云免费套餐包含哪些内容</h2><h3 id="Always-Free-云服务"><a href="#Always-Free-云服务" class="headerlink" title="Always Free 云服务"></a>Always Free 云服务</h3><p>免费使用，无限时长。</p><h4 id="两个-Oracle-自治数据库，随带-Oracle-Application-Express-APEX-和-Oracle-SQL-Developer-等强大工具。"><a href="#两个-Oracle-自治数据库，随带-Oracle-Application-Express-APEX-和-Oracle-SQL-Developer-等强大工具。" class="headerlink" title="两个 Oracle 自治数据库，随带 Oracle Application Express (APEX) 和 Oracle SQL Developer 等强大工具。"></a>两个 Oracle 自治数据库，随带 Oracle Application Express (APEX) 和 Oracle SQL Developer 等强大工具。</h4><h4 id="2-个-AMD-计算虚拟机"><a href="#2-个-AMD-计算虚拟机" class="headerlink" title="2 个 AMD 计算虚拟机"></a>2 个 AMD 计算虚拟机</h4><h4 id="最多-4-个-Arm-Ampere-A1-计算实例"><a href="#最多-4-个-Arm-Ampere-A1-计算实例" class="headerlink" title="最多 4 个 Arm Ampere A1 计算实例"></a>最多 4 个 Arm Ampere A1 计算实例</h4><h4 id="块存储、对象存储和归档存储；负载平衡器和数据出口；监视和通知"><a href="#块存储、对象存储和归档存储；负载平衡器和数据出口；监视和通知" class="headerlink" title="块存储、对象存储和归档存储；负载平衡器和数据出口；监视和通知"></a>块存储、对象存储和归档存储；负载平衡器和数据出口；监视和通知</h4><h3 id="基础设施"><a href="#基础设施" class="headerlink" title="基础设施"></a>基础设施</h3><p>2 个基于 AMD 的计算虚拟机，每个虚拟机配备 1/8 OCPU** 和 1 GB 内存。</p><p>4 个基于 Arm 的 Ampere A1 核心和 24 GB 内存，可用作一个虚拟机或最多 4 个虚拟机。</p><p>2 个块存储卷，共计 200 GB。</p><p>10 GB 对象存储。</p><p>10 GB 归档存储。</p><p>资源管理器：托管 Terraform。</p><p>5 个 OCI 堡垒。</p><h3 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h3><p>Oracle 自治事务处理数据库、ADW 业务数据平台、自治 JSON 数据库或 APEX Application Development 可选，共计 2 个数据库，每个数据库配备 1 颗 OCPU** 和 20 GB 存储空间。</p><p>NoSQL 数据库，每月 1.33 亿次读操作和 1.33 亿次写操作，最多 3 个表，每个表 25 GB 存储。</p><h3 id="观测和管理"><a href="#观测和管理" class="headerlink" title="观测和管理"></a>观测和管理</h3><p>监视：5 亿摄取点数，10 亿检索点数；</p><p>应用性能监控：每小时 1000 个跟踪事件。</p><p>日志：每月 10 GB。</p><p>通知：每月 100 万次 https 发送，每月 1000 次电子邮件发送；</p><p>Service Connector Hub：2 个服务连接器。</p><h3 id="其他服务"><a href="#其他服务" class="headerlink" title="其他服务"></a>其他服务</h3><p>灵活负载平衡器：1 个实例，10 Mbps。</p><p>灵活网络负载平衡器。</p><p>出站数据传输：每月 10 TB。</p><p>虚拟云网络 (VCN)：最多 2 个 VCN，包括 IPv4 和 IPv6 支持。</p><p>VCN 流日志：每月所有 OCI 日志记录服务共享最多 10 GB。</p><p>站点间 VPN：50 个 IPSec 连接。</p><p>内容管理入门版：每月 5000 个资产。</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> Oracle Cloud </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Oracle Cloud </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Oracle 云免费套餐包含哪些内容</title>
-      <link href="/posts/38112/"/>
-      <url>/posts/38112/</url>
       
         <content type="html"><![CDATA[<h2 id="Oracle-云免费套餐包含哪些内容"><a href="#Oracle-云免费套餐包含哪些内容" class="headerlink" title="Oracle 云免费套餐包含哪些内容"></a>Oracle 云免费套餐包含哪些内容</h2><h3 id="Always-Free-云服务"><a href="#Always-Free-云服务" class="headerlink" title="Always Free 云服务"></a>Always Free 云服务</h3><p>免费使用，无限时长。</p><h4 id="两个-Oracle-自治数据库，随带-Oracle-Application-Express-APEX-和-Oracle-SQL-Developer-等强大工具。"><a href="#两个-Oracle-自治数据库，随带-Oracle-Application-Express-APEX-和-Oracle-SQL-Developer-等强大工具。" class="headerlink" title="两个 Oracle 自治数据库，随带 Oracle Application Express (APEX) 和 Oracle SQL Developer 等强大工具。"></a>两个 Oracle 自治数据库，随带 Oracle Application Express (APEX) 和 Oracle SQL Developer 等强大工具。</h4><h4 id="2-个-AMD-计算虚拟机"><a href="#2-个-AMD-计算虚拟机" class="headerlink" title="2 个 AMD 计算虚拟机"></a>2 个 AMD 计算虚拟机</h4><h4 id="最多-4-个-Arm-Ampere-A1-计算实例"><a href="#最多-4-个-Arm-Ampere-A1-计算实例" class="headerlink" title="最多 4 个 Arm Ampere A1 计算实例"></a>最多 4 个 Arm Ampere A1 计算实例</h4><h4 id="块存储、对象存储和归档存储；负载平衡器和数据出口；监视和通知"><a href="#块存储、对象存储和归档存储；负载平衡器和数据出口；监视和通知" class="headerlink" title="块存储、对象存储和归档存储；负载平衡器和数据出口；监视和通知"></a>块存储、对象存储和归档存储；负载平衡器和数据出口；监视和通知</h4><h3 id="基础设施"><a href="#基础设施" class="headerlink" title="基础设施"></a>基础设施</h3><p>2 个基于 AMD 的计算虚拟机，每个虚拟机配备 1/8 OCPU** 和 1 GB 内存。</p><p>4 个基于 Arm 的 Ampere A1 核心和 24 GB 内存，可用作一个虚拟机或最多 4 个虚拟机。</p><p>2 个块存储卷，共计 200 GB。</p><p>10 GB 对象存储。</p><p>10 GB 归档存储。</p><p>资源管理器：托管 Terraform。</p><p>5 个 OCI 堡垒。</p><h3 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h3><p>Oracle 自治事务处理数据库、ADW 业务数据平台、自治 JSON 数据库或 APEX Application Development 可选，共计 2 个数据库，每个数据库配备 1 颗 OCPU** 和 20 GB 存储空间。</p><p>NoSQL 数据库，每月 1.33 亿次读操作和 1.33 亿次写操作，最多 3 个表，每个表 25 GB 存储。</p><h3 id="观测和管理"><a href="#观测和管理" class="headerlink" title="观测和管理"></a>观测和管理</h3><p>监视：5 亿摄取点数，10 亿检索点数；</p><p>应用性能监控：每小时 1000 个跟踪事件。</p><p>日志：每月 10 GB。</p><p>通知：每月 100 万次 https 发送，每月 1000 次电子邮件发送；</p><p>Service Connector Hub：2 个服务连接器。</p><h3 id="其他服务"><a href="#其他服务" class="headerlink" title="其他服务"></a>其他服务</h3><p>灵活负载平衡器：1 个实例，10 Mbps。</p><p>灵活网络负载平衡器。</p><p>出站数据传输：每月 10 TB。</p><p>虚拟云网络 (VCN)：最多 2 个 VCN，包括 IPv4 和 IPv6 支持。</p><p>VCN 流日志：每月所有 OCI 日志记录服务共享最多 10 GB。</p><p>站点间 VPN：50 个 IPSec 连接。</p><p>内容管理入门版：每月 5000 个资产。</p>]]></content>
       
