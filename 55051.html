@@ -1,0 +1,345 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>使用GitHub Actions对Freenom域名免费自动续期 | 𝓨𝓾𝔂𝓪𝓷'𝓼 𝓑𝓵𝓸𝓰</title><meta name="keywords" content="Github,Freenom"><meta name="author" content="𝓨𝓾𝔂𝓪𝓷"><meta name="copyright" content="𝓨𝓾𝔂𝓪𝓷"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="众所周知，Freenoms是世界上为数不多提供免费顶级域名的商家，不过需要每年续期，每次续期最多一年。在之前申请了一堆域名，而且不是同一时段申请的。每次手动人工续期会很麻烦，于是有一位大神就开发了自动续期脚本。本期文章就来和大家一起部署Freenom续期脚本  此方法有被GitHub封号的风险，请谨慎使用！  准备材料 Github账户 Freenom账户以及没续期的域名  步骤 fork原仓库">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用GitHub Actions对Freenom域名免费自动续期">
+<meta property="og:url" content="https://szsyzx.github.io/55051.html">
+<meta property="og:site_name" content="𝓨𝓾𝔂𝓪𝓷&#39;𝓼 𝓑𝓵𝓸𝓰">
+<meta property="og:description" content="众所周知，Freenoms是世界上为数不多提供免费顶级域名的商家，不过需要每年续期，每次续期最多一年。在之前申请了一堆域名，而且不是同一时段申请的。每次手动人工续期会很麻烦，于是有一位大神就开发了自动续期脚本。本期文章就来和大家一起部署Freenom续期脚本  此方法有被GitHub封号的风险，请谨慎使用！  准备材料 Github账户 Freenom账户以及没续期的域名  步骤 fork原仓库">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://imgsrc.baidu.com/super/pic/item/828ba61ea8d3fd1f4aeff3e4754e251f94ca5f0d.jpg">
+<meta property="article:published_time" content="2022-10-09T08:00:37.000Z">
+<meta property="article:modified_time" content="2022-10-09T08:00:39.000Z">
+<meta property="article:author" content="𝓨𝓾𝔂𝓪𝓷">
+<meta property="article:tag" content="Github">
+<meta property="article:tag" content="Freenom">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://imgsrc.baidu.com/super/pic/item/828ba61ea8d3fd1f4aeff3e4754e251f94ca5f0d.jpg"><link rel="shortcut icon" href="https://s2.loli.net/2022/09/05/XIJ8QimgfoG6khP.jpg"><link rel="canonical" href="https://szsyzx.github.io/55051"><link rel="preconnect" href="//cdn1.tianli0.top"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdnjs.sourcegcdn.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdnjs.sourcegcdn.com/ajax/libs/jquery/3.6.0/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdnjs.sourcegcdn.com/ajax/libs/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdnjs.sourcegcdn.com/ajax/libs/justifiedGallery/3.8.1/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdnjs.sourcegcdn.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js',
+      css: 'https://cdnjs.sourcegcdn.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2022-10-09 08:00:39'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        })(window)</script><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-footer-beautify@1.0.0/lib/runtime.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.3.0"><link rel="alternate" href="/atom.xml" title="𝓨𝓾𝔂𝓪𝓷'𝓼 𝓑𝓵𝓸𝓰" type="application/atom+xml">
+<link rel="alternate" href="/rss.xml" title="𝓨𝓾𝔂𝓪𝓷'𝓼 𝓑𝓵𝓸𝓰" type="application/rss+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="simply-cha-top"></div><div class="is-center" id="sidebar-avatar"><div class="avatar-img"><img src="https://s2.loli.net/2022/09/05/XIJ8QimgfoG6khP.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">𝓨𝓾𝔂𝓪𝓷</div><div class="author-info__description">欢迎光临小窝！</div></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">55</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">34</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">20</div></a></div></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/szsyzx"><i class="fab fa-github"></i><span> Follow Me</span></a><div class="menu-info-social-icons is-center"><a class="social-icon" href="https://github.com/szsyzx" target="_blank" title="Github"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-github"></use></svg></a><a class="social-icon" href="mailto:szys@outlook.it" target="_blank" title="Email"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-youxiang"></use></svg></a><a class="social-icon" href="https://space.bilibili.com/238053726" target="_blank" title="Bilibili"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-CN_bilibiliB"></use></svg></a><a class="social-icon" href="https://music.163.com/#/user/home?id=3873812910" target="_blank" title="网易云"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-yinle"></use></svg></a><a class="social-icon" href="//rss.xml" target="_blank" title="rss"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-rss"></use></svg></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-xigua1"></use></svg><span> 笔记心得</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child" style="left:-45px;"><li><a class="site-page child" href="/tags/Course/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-jiaocheng"></use></svg><span> 教程分享</span></a></li><li><a class="site-page child" href="/tags/Project/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-xiangmu"></use></svg><span> 收藏项目</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-miao"></use></svg><span> 笔记合集</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child" style="left:-100px;"><li><a class="site-page child" href="/tags/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-colorful-code"></use></svg><span> 软件下载</span></a></li><li><a class="site-page child" href="/tags/Python/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-colorful-code"></use></svg><span> 玩玩爬虫</span></a></li><li><a class="site-page child" href="/tags/html/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-colorful-code"></use></svg><span> 服务搭建</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-tea"></use></svg><span> 生活日常</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child" style="left:-100px;"><li><a class="site-page child" href="/link/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-pengyou"></use></svg><span> 友情链接</span></a></li><li><a class="site-page child" href="/friendcircle/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-pengyouquanzhushou2x"></use></svg><span> 朋友文章</span></a></li><li><a class="site-page child" href="/messageboard/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-shuoshuo-"></use></svg><span> 留言信箱</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-liuyan"></use></svg><span> 君临天下</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child" style="left:-45px;"><li><a class="site-page child" href="/tags/Diary/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-tubiaozhizuomoban-"></use></svg><span> 我的随笔</span></a></li><li><a class="site-page child" href="/about/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-xinfeng"></use></svg><span> 我的自述</span></a></li></ul></div></div><div class="simply-cha"></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><a id="site-name" href="/">𝓨𝓾𝔂𝓪𝓷'𝓼 𝓑𝓵𝓸𝓰</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-xigua1"></use></svg><span> 笔记心得</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child" style="left:-45px;"><li><a class="site-page child" href="/tags/Course/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-jiaocheng"></use></svg><span> 教程分享</span></a></li><li><a class="site-page child" href="/tags/Project/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-xiangmu"></use></svg><span> 收藏项目</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-miao"></use></svg><span> 笔记合集</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child" style="left:-100px;"><li><a class="site-page child" href="/tags/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-colorful-code"></use></svg><span> 软件下载</span></a></li><li><a class="site-page child" href="/tags/Python/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-colorful-code"></use></svg><span> 玩玩爬虫</span></a></li><li><a class="site-page child" href="/tags/html/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-colorful-code"></use></svg><span> 服务搭建</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-tea"></use></svg><span> 生活日常</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child" style="left:-100px;"><li><a class="site-page child" href="/link/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-pengyou"></use></svg><span> 友情链接</span></a></li><li><a class="site-page child" href="/friendcircle/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-pengyouquanzhushou2x"></use></svg><span> 朋友文章</span></a></li><li><a class="site-page child" href="/messageboard/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-shuoshuo-"></use></svg><span> 留言信箱</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-liuyan"></use></svg><span> 君临天下</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child" style="left:-45px;"><li><a class="site-page child" href="/tags/Diary/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-tubiaozhizuomoban-"></use></svg><span> 我的随笔</span></a></li><li><a class="site-page child" href="/about/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-xinfeng"></use></svg><span> 我的自述</span></a></li></ul></div></div></div><div id="navFn"><div id="search-button"><a class="social-icon search"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-sousuo"></use></svg><span> 搜索</span></a></div><div id="darkmodeBt"><a class="darkmode switch"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-deng1"></use></svg><span id="darkmode-switch"> 关灯</span></a></div><div id="toggle-menu"><a class="site-page"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-mulu"></use></svg></a></div></div></div></nav></header><main class="layout hide-aside" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">使用GitHub Actions对Freenom域名免费自动续期</h1><div id="post-meta"><div class="tag-cloud-list is-center"><a href="/tags/Github/" style="font-size: 1.5em; color: rgb(131, 68, 188)">Github</a><a href="/tags/Freenom/" style="font-size: 1.5em; color: rgb(149, 119, 124)">Freenom</a></div><div class="meta-firstline"><span class="post-meta-date"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-rili"></use></svg><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-10-09T08:00:37.000Z" title="发表于 2022-10-09 08:00:37">2022-10-09</time><span class="post-meta-separator">|</span><svg class="icon" aria-hidden="true"><use xlink:href="#icon-shijian"></use></svg><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-10-09T08:00:39.000Z" title="更新于 2022-10-09 08:00:39">2022-10-09</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><svg class="icon" aria-hidden="true"><use xlink:href="#icon-fenlei1"></use></svg><a class="post-meta-categories" href="/categories/Github/">Github</a><i class="fas fa-angle-right post-meta-separator"></i><svg class="icon" aria-hidden="true"><use xlink:href="#icon-fenlei1"></use></svg><a class="post-meta-categories" href="/categories/Freenom/">Freenom</a></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>6分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="使用GitHub Actions对Freenom域名免费自动续期"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div><div class="line"> <svg class="icon" aria-hidden="true"><use xlink:href="#icon-xigua2"></use></svg><svg class="icon" aria-hidden="true"><use xlink:href="#icon-xigua2"></use></svg><svg class="icon" aria-hidden="true"><use xlink:href="#icon-xigua2"></use></svg><svg class="icon" aria-hidden="true"><use xlink:href="#icon-xigua2"></use></svg><svg class="icon" aria-hidden="true"><use xlink:href="#icon-xigua2"></use></svg></div></div></div><article class="post-content" id="article-container"><p>众所周知，Freenoms是世界上为数不多提供免费顶级域名的商家，不过需要每年续期，每次续期最多一年。在之前申请了一堆域名，而且不是同一时段申请的。每次手动人工续期会很麻烦，于是有一位大神就开发了自动续期脚本。本期文章就来和大家一起部署Freenom续期脚本</p>
+<blockquote>
+<p>此方法有被GitHub封号的风险，请谨慎使用！</p>
+</blockquote>
+<h2 id="准备材料"><a href="#准备材料" class="headerlink" title="准备材料"></a>准备材料</h2><ul>
+<li>Github账户</li>
+<li>Freenom账户以及没续期的域名</li>
+</ul>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ol>
+<li>fork<a target="_blank" rel="noopener" href="https://github.com/luolongfei/freenom">原仓库</a></li>
+</ol>
+<p><img src="https://gcore.jsdelivr.net/gh/taffy-project/pics/20221007190441.png"></p>
+<ol start="2">
+<li>转到“Actions”，点击“Or skip this and set up a workflow yourself”</li>
+</ol>
+<p><img src="https://gcore.jsdelivr.net/gh/taffy-project/pics/20221007191222.png"></p>
+<ol start="3">
+<li>复制以下内容到Actions文件创建页面，可以适当修改Cron定时任务的时间</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">name: Run it on action</span><br><span class="line"></span><br><span class="line">on:</span><br><span class="line">  schedule:</span><br><span class="line">    - cron: 00 02 * * *</span><br><span class="line">  workflow_dispatch:</span><br><span class="line">jobs:</span><br><span class="line">  run-it:</span><br><span class="line">    runs-on: ubuntu-latest</span><br><span class="line">    name: Run it on action</span><br><span class="line">    steps:</span><br><span class="line">      - name: Checkout master</span><br><span class="line">        uses: actions&#x2F;checkout@v2</span><br><span class="line">      - name: Setup PHP</span><br><span class="line">        uses: shivammathur&#x2F;setup-php@v2</span><br><span class="line">        with:</span><br><span class="line">          php-version: &quot;7.4&quot;</span><br><span class="line">      - name: Setting accounts</span><br><span class="line">        run: |</span><br><span class="line">          cp .env.example .env</span><br><span class="line">          if [[ (&#39;$&#123;&#123; secrets.FREENOM_USERNAME &#125;&#125;&#39; &#x3D;&#x3D; &#39;&#39; || &#39;$&#123;&#123; secrets.FREENOM_PASSWORD &#125;&#125;&#39; &#x3D;&#x3D; &#39;&#39;) &amp;&amp; &#39;$&#123;&#123; secrets.MULTIPLE_ACCOUNTS &#125;&#125;&#39; &#x3D;&#x3D; &#39;&#39; ]]; then echo &#39;你在 Github 的当前项目的 Settings &gt; Secrets 画面没有设置任何与账户信息相关的 secret 值，无法正常运行，请添加新的 secret 值，设置 FREENOM_USERNAME 与 FREENOM_PASSWORD，或者设置 MULTIPLE_ACCOUNTS，以及 .env 文件中其它必要项，各项的具体含义与格式参考本项目 .env 文件中的说明。&#39;; fi</span><br><span class="line">          if [ &#39;$&#123;&#123; secrets.FREENOM_USERNAME &#125;&#125;&#39; !&#x3D; &#39;&#39; ]; then sed -i &quot;s&#x2F;^FREENOM_USERNAME&#x3D;.*$&#x2F;FREENOM_USERNAME&#x3D;&#39;$&#123;&#123; secrets.FREENOM_USERNAME &#125;&#125;&#39;&#x2F;&quot; .env; fi</span><br><span class="line">          if [ &#39;$&#123;&#123; secrets.FREENOM_PASSWORD &#125;&#125;&#39; !&#x3D; &#39;&#39; ]; then sed -i &quot;s&#x2F;^FREENOM_PASSWORD&#x3D;.*$&#x2F;FREENOM_PASSWORD&#x3D;&#39;$&#123;&#123; secrets.FREENOM_PASSWORD &#125;&#125;&#39;&#x2F;&quot; .env; fi</span><br><span class="line">          if [ &#39;$&#123;&#123; secrets.MULTIPLE_ACCOUNTS &#125;&#125;&#39; !&#x3D; &#39;&#39; ]; then sed -i &quot;s&#x2F;^MULTIPLE_ACCOUNTS&#x3D;.*$&#x2F;MULTIPLE_ACCOUNTS&#x3D;&#39;$&#123;&#123; secrets.MULTIPLE_ACCOUNTS &#125;&#125;&#39;&#x2F;&quot; .env; fi</span><br><span class="line">          if [ &#39;$&#123;&#123; secrets.MAIL_USERNAME &#125;&#125;&#39; !&#x3D; &#39;&#39; ]; then sed -i &quot;s&#x2F;^MAIL_USERNAME&#x3D;.*$&#x2F;MAIL_USERNAME&#x3D;&#39;$&#123;&#123; secrets.MAIL_USERNAME &#125;&#125;&#39;&#x2F;&quot; .env; fi</span><br><span class="line">          if [ &#39;$&#123;&#123; secrets.MAIL_PASSWORD &#125;&#125;&#39; !&#x3D; &#39;&#39; ]; then sed -i &quot;s&#x2F;^MAIL_PASSWORD&#x3D;.*$&#x2F;MAIL_PASSWORD&#x3D;&#39;$&#123;&#123; secrets.MAIL_PASSWORD &#125;&#125;&#39;&#x2F;&quot; .env; fi</span><br><span class="line">          if [ &#39;$&#123;&#123; secrets.TO &#125;&#125;&#39; !&#x3D; &#39;&#39; ]; then sed -i &quot;s&#x2F;^TO&#x3D;.*$&#x2F;TO&#x3D;&#39;$&#123;&#123; secrets.TO &#125;&#125;&#39;&#x2F;&quot; .env; fi</span><br><span class="line">          if [ &#39;$&#123;&#123; secrets.MAIL_ENABLE &#125;&#125;&#39; !&#x3D; &#39;&#39; ]; then sed -i &quot;s&#x2F;^MAIL_ENABLE&#x3D;.*$&#x2F;MAIL_ENABLE&#x3D;&#39;$&#123;&#123; secrets.MAIL_ENABLE &#125;&#125;&#39;&#x2F;&quot; .env; fi</span><br><span class="line">          if [ &#39;$&#123;&#123; secrets.TELEGRAM_CHAT_ID &#125;&#125;&#39; !&#x3D; &#39;&#39; ]; then sed -i &quot;s&#x2F;^TELEGRAM_CHAT_ID&#x3D;.*$&#x2F;TELEGRAM_CHAT_ID&#x3D;&#39;$&#123;&#123; secrets.TELEGRAM_CHAT_ID &#125;&#125;&#39;&#x2F;&quot; .env; fi</span><br><span class="line">          if [ &#39;$&#123;&#123; secrets.TELEGRAM_BOT_TOKEN &#125;&#125;&#39; !&#x3D; &#39;&#39; ]; then sed -i &quot;s&#x2F;^TELEGRAM_BOT_TOKEN&#x3D;.*$&#x2F;TELEGRAM_BOT_TOKEN&#x3D;&#39;$&#123;&#123; secrets.TELEGRAM_BOT_TOKEN &#125;&#125;&#39;&#x2F;&quot; .env; fi</span><br><span class="line">          if [ &#39;$&#123;&#123; secrets.TELEGRAM_BOT_ENABLE &#125;&#125;&#39; !&#x3D; &#39;&#39; ]; then sed -i &quot;s&#x2F;^TELEGRAM_BOT_ENABLE&#x3D;.*$&#x2F;TELEGRAM_BOT_ENABLE&#x3D;&#39;$&#123;&#123; secrets.TELEGRAM_BOT_ENABLE &#125;&#125;&#39;&#x2F;&quot; .env; fi</span><br><span class="line">          if [ &#39;$&#123;&#123; secrets.NOTICE_FREQ &#125;&#125;&#39; !&#x3D; &#39;&#39; ]; then sed -i &quot;s&#x2F;^NOTICE_FREQ&#x3D;.*$&#x2F;NOTICE_FREQ&#x3D;&#39;$&#123;&#123; secrets.NOTICE_FREQ &#125;&#125;&#39;&#x2F;&quot; .env; fi</span><br><span class="line">          sed -i &quot;s&#x2F;^ON_GITHUB_ACTIONS&#x3D;.*$&#x2F;ON_GITHUB_ACTIONS&#x3D;true&#x2F;&quot; .env</span><br><span class="line">          sudo wget git.io&#x2F;warp.sh</span><br><span class="line">          sudo bash warp.sh 4</span><br><span class="line">      - name: Run renew task</span><br><span class="line">        run: |</span><br><span class="line">          php run</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+</table>
+<p><img src="https://gcore.jsdelivr.net/gh/taffy-project/pics/20221007191326.png"></p>
+<ol start="4">
+<li>设置Secrets变量，这里是当初原仓库Actions变量的说明</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th align="center">变量名</th>
+<th align="center">含义</th>
+<th align="center">默认值</th>
+<th align="center">是否必须</th>
+<th align="center">备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">FREENOM_USERNAME</td>
+<td align="center">freenom 账户</td>
+<td align="center">-</td>
+<td align="center">是</td>
+<td align="center">只支持邮箱账户，不支持也不打算支持第三方社交账户登录</td>
+</tr>
+<tr>
+<td align="center">FREENOM_PASSWORD</td>
+<td align="center">freenom 密码</td>
+<td align="center">-</td>
+<td align="center">是</td>
+<td align="center">某些特殊字符可能需要转义，在<code>Github actions</code>环境，请在除字母数字以外的字符前加上“\”，否则可能无法正确读取密码，此举是防止某些字符在<code>shell</code>命令行被解析，举个例子，比如我密码是<code>fei.,:!~@#$%^&amp;*?233-_abcd^$$</code>，那么写到秘密变量时就应写为<code>fei\.\,\:\!\~\@\#\$\%\^\&amp;\*\?233\-\_abcd\^\$\$</code>。而在普通<code>VPS</code>环境，则只用在密码中的“#”或单双引号前加“\”，请参考<code>.env.example</code>文件内的注释，应该没人会设置那么变态的密码吧</td>
+</tr>
+<tr>
+<td align="center">MULTIPLE_ACCOUNTS</td>
+<td align="center">多账户支持</td>
+<td align="center">-</td>
+<td align="center">否</td>
+<td align="center">多个账户和密码的格式必须是“`&lt;账户1&gt;@&lt;密码1&gt;</td>
+</tr>
+<tr>
+<td align="center">MAIL_USERNAME</td>
+<td align="center">机器人邮箱账户</td>
+<td align="center">-</td>
+<td align="center">是</td>
+<td align="center">支持<code>Gmail</code>、<code>QQ邮箱</code>以及<code>163邮箱</code>，尽可能使用<code>163邮箱</code>或者<code>QQ邮箱</code>，而非之前推荐的<code>Gmail</code>。因为谷歌的安全机制，每次在新设备登录 <code>Gmail</code> 都会先被限制，需要手动解除限制才行，而<code>Github Actions</code>每次创建的虚拟环境都会分配一个新的设备<code>IP</code>，相当于每次都是从新设备登录<code>Gmail</code>，而我们不可能每次都去手动为<code>Gmail</code>解除登录限制，所以这种机制会导致无法发出通知邮件。具体的配置方法参考「 <a target="_blank" rel="noopener" href="https://blog.misaka.rest/2022/10/07/freedom-acrenew/#--%E9%85%8D%E7%BD%AE%E5%8F%91%E4%BF%A1%E9%82%AE%E7%AE%B1">配置发信邮箱</a> 」</td>
+</tr>
+<tr>
+<td align="center">MAIL_PASSWORD</td>
+<td align="center">机器人邮箱密码</td>
+<td align="center">-</td>
+<td align="center">是</td>
+<td align="center"><code>Gmail</code>填密码，<code>QQ邮箱</code>或<code>163邮箱</code>填授权码</td>
+</tr>
+<tr>
+<td align="center">TO</td>
+<td align="center">接收通知的邮箱</td>
+<td align="center">-</td>
+<td align="center">是</td>
+<td align="center">你自己最常用的邮箱，推荐使用<code>QQ邮箱</code>，用来接收机器人邮箱发出的域名相关邮件</td>
+</tr>
+<tr>
+<td align="center">MAIL_ENABLE</td>
+<td align="center">是否启用邮件推送功能</td>
+<td align="center">true</td>
+<td align="center">否</td>
+<td align="center"><code>true</code>：启用<br/><code>false</code>：不启用<br/>默认启用，如果设为<code>false</code>，不启用邮件推送功能，则上面的<code>MAIL_USERNAME</code>、<code>MAIL_PASSWORD</code>、<code>TO</code>变量变为非必须，可不设置</td>
+</tr>
+<tr>
+<td align="center">TELEGRAM_CHAT_ID</td>
+<td align="center">你的<code>chat_id</code></td>
+<td align="center">-</td>
+<td align="center">否</td>
+<td align="center">通过发送<code>/start</code>给<code>@userinfobot</code>可以获取自己的<code>id</code></td>
+</tr>
+<tr>
+<td align="center">TELEGRAM_BOT_TOKEN</td>
+<td align="center">你的<code>Telegram bot</code>的<code>token</code></td>
+<td align="center">-</td>
+<td align="center">否</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">TELEGRAM_BOT_ENABLE</td>
+<td align="center">是否启用<code>Telegram Bot</code>推送功能</td>
+<td align="center">false</td>
+<td align="center">否</td>
+<td align="center"><code>true</code>：启用<br/><code>false</code>：不启用<br/>默认不启用，如果设为<code>true</code>，则必须设置上面的<code>TELEGRAM_CHAT_ID</code>和<code>TELEGRAM_BOT_TOKEN</code>变量</td>
+</tr>
+<tr>
+<td align="center">NOTICE_FREQ</td>
+<td align="center">通知频率</td>
+<td align="center">1</td>
+<td align="center">否</td>
+<td align="center"><code>0</code>：仅当有续期操作的时候<br/><code>1</code>：每次执行</td>
+</tr>
+</tbody></table>
+<ol start="5">
+<li>在Actions页面，按照截图步骤调试</li>
+</ol>
+<p><img src="https://gcore.jsdelivr.net/gh/taffy-project/pics/20221007191559.png"></p>
+<ol start="6">
+<li>如运行成功，将会视你设置的通知方式、收到域名续期通知</li>
+</ol>
+<p><strong>文章作者:</strong> <a target="_blank" rel="noopener" href="https://blog.misaka.rest/">MisakaNo</a></p>
+<p><strong>文章链接:</strong> <a target="_blank" rel="noopener" href="https://blog.misaka.rest/2022/10/07/freedom-acrenew/">https://blog.misaka.rest/2022/10/07/freedom-acrenew/</a></p>
+<p><strong>版权声明:</strong> <strong>本博客所有文章除特别声明外，均采用</strong> <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> <strong>许可协议。转载请注明来自</strong> <a target="_blank" rel="noopener" href="https://blog.misaka.rest/">MisakaNo の 小破站</a>！</p>
+</article><div class="post-copyright"><div class="post-copyright__title"><span class="post-copyright-info"><h>使用GitHub Actions对Freenom域名免费自动续期</h></span></div><div class="post-copyright__type"><span class="post-copyright-info"><a href="https://szsyzx.github.io/55051.html">https://szsyzx.github.io/55051.html</a></span></div><div class="post-copyright-m"><div class="post-copyright-m-info"><div class="post-copyright-a"><h>作者</h><div class="post-copyright-cc-info"><h>𝓨𝓾𝔂𝓪𝓷</h></div></div><div class="post-copyright-c"><h>发布于</h><div class="post-copyright-cc-info"><h>2022-10-09</h></div></div><div class="post-copyright-u"><h>更新于</h><div class="post-copyright-cc-info"><h>2022-10-09</h></div></div><div class="post-copyright-c"><h>许可协议</h><div class="post-copyright-cc-info"><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a rel="noopener" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></div></div></div></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Github/">Github</a><a class="post-meta__tags" href="/tags/Freenom/">Freenom</a></div><div class="post_share"><div class="social-share" data-image="https://imgsrc.baidu.com/super/pic/item/828ba61ea8d3fd1f4aeff3e4754e251f94ca5f0d.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdnjs.sourcegcdn.com/ajax/libs/social-share.js/1.0.16/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdnjs.sourcegcdn.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js" defer></script></div></div><div id="post-comment"><div class="comment-head is-center"><div class="comment-headline"><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div></main><footer id="footer"><div class="wordcount"><span>本站更新了 33.3k 字</span></br><span>还在努力更新中.. 加油！加油啦！</span></div><div class="footer-content"><a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span style="padding: 0.4rem">hexo</span></a><a><i class="fas fa-heart"></i></a><a href="https://butterfly.js.org/" target="_blank" rel="nofollow noopener"><span style="padding: 0.4rem">butterfly</span></a><div style="font-size: 0.7rem"><span id="timeDate">载入天数...</span><span> </span><span id="times">载入时分秒...</span><script src="/js/add/duration.js"></script></div></div><div class="statistics"><span id="site_uv">有 <span id="busuanzi_value_site_uv"></span><span> 人光顾过我的小窝</span></span><span id="site_pv"><span>共 </span><span id="busuanzi_value_site_pv"></span><span> 次在这里摘了个瓜</span></span></div></footer></div><div id="rightside"><div id="rightside-menu"><div id="rightside-avatar-card"><div class="is-center" id="rightside-avatar"><div class="avatar-img"><img src="https://s2.loli.net/2022/09/05/XIJ8QimgfoG6khP.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"></div><div class="author-info__name">𝓨𝓾𝔂𝓪𝓷</div><div class="author-info__description">欢迎光临小窝！</div></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">55</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">34</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">20</div></a></div></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/szsyzx"><i class="fab fa-github"></i><span> Follow Me</span></a><div class="menu-info-social-icons is-center"><a class="social-icon" href="https://github.com/szsyzx" target="_blank" title="Github"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-github"></use></svg></a><a class="social-icon" href="mailto:szys@outlook.it" target="_blank" title="Email"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-youxiang"></use></svg></a><a class="social-icon" href="https://space.bilibili.com/238053726" target="_blank" title="Bilibili"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-CN_bilibiliB"></use></svg></a><a class="social-icon" href="https://music.163.com/#/user/home?id=3873812910" target="_blank" title="网易云"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-yinle"></use></svg></a><a class="social-icon" href="//rss.xml" target="_blank" title="rss"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-rss"></use></svg></a></div></div><div class="is-center" id="rightside-menus"><button id="rightside-childmenu-contents" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="rightside-childmenu-comment"><a href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a></button><button id="rightside-childmenu-go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button><button id="rightside-childmenu-unfold" type="button" title="展开菜单"><i class="fas fa-angle-up"></i></button><button id="rightside-childmenu-fold" type="button" title="收起菜单"><i class="fas fa-angle-down"></i></button></div></div><div id="rightside-contents"><div class="card-widget" id="card-toc"><div class="item-headline is-center"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E6%9D%90%E6%96%99"><span class="toc-text">准备材料</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4"><span class="toc-text">步骤</span></a></li></ol></div></div></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(()=>{
+  const $countDom = document.getElementById('twikoo-count')
+  const init = () => {
+    let initData = {
+      el: '#twikoo-wrap',
+      envId: 'blog-twikoo-5gjox0si204192ef',
+      region: ''
+    }
+
+    if (false) {
+      const otherData = false
+      initData = Object.assign(initData, otherData)
+    }
+    
+    twikoo.init(initData)
+  }
+
+  const getCount = () => {
+    twikoo.getCommentsCount({
+      envId: 'blog-twikoo-5gjox0si204192ef',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      $countDom.innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const loadTwikoo = (bool = false) => {
+    if (typeof twikoo === 'object') {
+      init()
+      bool && $countDom && setTimeout(getCount,0)
+    } else {
+      getScript('https://cdnjs.sourcegcdn.com/ajax/libs/twikoo/1.5.4/twikoo.all.min.js').then(()=> {
+        init()
+        bool && $countDom && setTimeout(getCount,0)
+      })
+    }
+  }
+
+  if ('Twikoo' === 'Twikoo' || !true) {
+    if (true) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo(true)
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><script async src="//at.alicdn.com/t/font_2749059_1lswi5j6yqg.js"></script><script src="/js/add/nav.js"></script><script src="/js/add/rightside.js"></script><script src="https://cdn1.tianli0.top/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script data-pjax>
+  function butterfly_footer_beautify_injector_config(){
+    var parent_div_git = document.getElementById('footer-wrap');
+    var item_html = '<div id="workboard"></div><div id="ghbdages" style="overflow:hidden;max-height:180px;height:auto;text-align:center;margin-top:10px"><div class="swiper-wrapper"><div class="swiper-slide"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" title="博客框架为Hexo_v5.3.0"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&amp;logo=hexo" alt=""/></a><a class="github-badge" target="_blank" href="https://butterfly.js.org/" style="margin-inline:5px" title="主题版本Butterfly_v3.7.0-b2"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&amp;logo=bitdefender" alt=""/></a><a class="github-badge" target="_blank" href="https://www.sourcegcdn.com/" style="margin-inline:5px" title="本站使用Source Global CDN为部分静态资源提供CDN加速"><img src="https://img.shields.io/badge/CDN-sourcegcdn-orange?style=flat&amp;logo=Apache%20RocketMQ" alt=""/></a><a class="github-badge" target="_blank" href="https://www.jsdelivr.com/" style="margin-inline:5px" title="本站使用JsDelivr仅用于访问部分静态资源"><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&amp;logo=jsDelivr" alt=""/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" title="本站项目由Github托管"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&amp;logo=GitHub" alt=""/></a><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&amp;logo=Claris" alt=""/></a></div></div></div><style>a.github-badge:hover:before {display:none}</style>';
+    console.log('已挂载butterfly_footer_beautify')
+    parent_div_git.insertAdjacentHTML("beforeend",item_html)
+    }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_footer_beautify_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_footer_beautify_injector_config();
+  }
+  </script><script async src="https://npm.elemecdn.com/hexo-butterfly-footer-beautify@1.0.0/lib/runtime.js"></script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-footer-beautify/lib/swiperbdage_init_js.min.js"></script><!-- hexo injector body_end end --></body></html>

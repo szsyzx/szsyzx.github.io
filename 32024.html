@@ -1,0 +1,269 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Oracle存储桶当图床用 | 𝓨𝓾𝔂𝓪𝓷'𝓼 𝓑𝓵𝓸𝓰</title><meta name="keywords" content="oracle cloud"><meta name="author" content="𝓨𝓾𝔂𝓪𝓷"><meta name="copyright" content="𝓨𝓾𝔂𝓪𝓷"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="oracle cloud">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Oracle存储桶当图床用">
+<meta property="og:url" content="https://szsyzx.github.io/32024.html">
+<meta property="og:site_name" content="𝓨𝓾𝔂𝓪𝓷&#39;𝓼 𝓑𝓵𝓸𝓰">
+<meta property="og:description" content="oracle cloud">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://imgsrc.baidu.com/super/pic/item/8701a18b87d6277f0aa839e66d381f30e824fcb2.jpg">
+<meta property="article:published_time" content="2022-11-27T05:11:17.474Z">
+<meta property="article:modified_time" content="2022-11-27T05:11:17.474Z">
+<meta property="article:author" content="𝓨𝓾𝔂𝓪𝓷">
+<meta property="article:tag" content="oracle cloud">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://imgsrc.baidu.com/super/pic/item/8701a18b87d6277f0aa839e66d381f30e824fcb2.jpg"><link rel="shortcut icon" href="https://s2.loli.net/2022/09/05/XIJ8QimgfoG6khP.jpg"><link rel="canonical" href="https://szsyzx.github.io/32024"><link rel="preconnect" href="//cdn1.tianli0.top"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdnjs.sourcegcdn.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdnjs.sourcegcdn.com/ajax/libs/jquery/3.6.0/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdnjs.sourcegcdn.com/ajax/libs/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdnjs.sourcegcdn.com/ajax/libs/justifiedGallery/3.8.1/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdnjs.sourcegcdn.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js',
+      css: 'https://cdnjs.sourcegcdn.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2022-11-27 05:11:17'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        })(window)</script><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-footer-beautify@1.0.0/lib/runtime.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.3.0"><link rel="alternate" href="/atom.xml" title="𝓨𝓾𝔂𝓪𝓷'𝓼 𝓑𝓵𝓸𝓰" type="application/atom+xml">
+<link rel="alternate" href="/rss.xml" title="𝓨𝓾𝔂𝓪𝓷'𝓼 𝓑𝓵𝓸𝓰" type="application/rss+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="simply-cha-top"></div><div class="is-center" id="sidebar-avatar"><div class="avatar-img"><img src="https://s2.loli.net/2022/09/05/XIJ8QimgfoG6khP.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">𝓨𝓾𝔂𝓪𝓷</div><div class="author-info__description">欢迎光临小窝！</div></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">55</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">34</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">20</div></a></div></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/szsyzx"><i class="fab fa-github"></i><span> Follow Me</span></a><div class="menu-info-social-icons is-center"><a class="social-icon" href="https://github.com/szsyzx" target="_blank" title="Github"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-github"></use></svg></a><a class="social-icon" href="mailto:szys@outlook.it" target="_blank" title="Email"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-youxiang"></use></svg></a><a class="social-icon" href="https://space.bilibili.com/238053726" target="_blank" title="Bilibili"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-CN_bilibiliB"></use></svg></a><a class="social-icon" href="https://music.163.com/#/user/home?id=3873812910" target="_blank" title="网易云"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-yinle"></use></svg></a><a class="social-icon" href="//rss.xml" target="_blank" title="rss"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-rss"></use></svg></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-xigua1"></use></svg><span> 笔记心得</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child" style="left:-45px;"><li><a class="site-page child" href="/tags/Course/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-jiaocheng"></use></svg><span> 教程分享</span></a></li><li><a class="site-page child" href="/tags/Project/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-xiangmu"></use></svg><span> 收藏项目</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-miao"></use></svg><span> 笔记合集</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child" style="left:-100px;"><li><a class="site-page child" href="/tags/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-colorful-code"></use></svg><span> 软件下载</span></a></li><li><a class="site-page child" href="/tags/Python/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-colorful-code"></use></svg><span> 玩玩爬虫</span></a></li><li><a class="site-page child" href="/tags/html/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-colorful-code"></use></svg><span> 服务搭建</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-tea"></use></svg><span> 生活日常</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child" style="left:-100px;"><li><a class="site-page child" href="/link/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-pengyou"></use></svg><span> 友情链接</span></a></li><li><a class="site-page child" href="/friendcircle/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-pengyouquanzhushou2x"></use></svg><span> 朋友文章</span></a></li><li><a class="site-page child" href="/messageboard/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-shuoshuo-"></use></svg><span> 留言信箱</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-liuyan"></use></svg><span> 君临天下</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child" style="left:-45px;"><li><a class="site-page child" href="/tags/Diary/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-tubiaozhizuomoban-"></use></svg><span> 我的随笔</span></a></li><li><a class="site-page child" href="/about/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-xinfeng"></use></svg><span> 我的自述</span></a></li></ul></div></div><div class="simply-cha"></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><a id="site-name" href="/">𝓨𝓾𝔂𝓪𝓷'𝓼 𝓑𝓵𝓸𝓰</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-xigua1"></use></svg><span> 笔记心得</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child" style="left:-45px;"><li><a class="site-page child" href="/tags/Course/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-jiaocheng"></use></svg><span> 教程分享</span></a></li><li><a class="site-page child" href="/tags/Project/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-xiangmu"></use></svg><span> 收藏项目</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-miao"></use></svg><span> 笔记合集</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child" style="left:-100px;"><li><a class="site-page child" href="/tags/%E8%BD%AF%E4%BB%B6%E4%B8%8B%E8%BD%BD/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-colorful-code"></use></svg><span> 软件下载</span></a></li><li><a class="site-page child" href="/tags/Python/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-colorful-code"></use></svg><span> 玩玩爬虫</span></a></li><li><a class="site-page child" href="/tags/html/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-colorful-code"></use></svg><span> 服务搭建</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-tea"></use></svg><span> 生活日常</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child" style="left:-100px;"><li><a class="site-page child" href="/link/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-pengyou"></use></svg><span> 友情链接</span></a></li><li><a class="site-page child" href="/friendcircle/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-pengyouquanzhushou2x"></use></svg><span> 朋友文章</span></a></li><li><a class="site-page child" href="/messageboard/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-shuoshuo-"></use></svg><span> 留言信箱</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-liuyan"></use></svg><span> 君临天下</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child" style="left:-45px;"><li><a class="site-page child" href="/tags/Diary/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-tubiaozhizuomoban-"></use></svg><span> 我的随笔</span></a></li><li><a class="site-page child" href="/about/"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-xinfeng"></use></svg><span> 我的自述</span></a></li></ul></div></div></div><div id="navFn"><div id="search-button"><a class="social-icon search"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-sousuo"></use></svg><span> 搜索</span></a></div><div id="darkmodeBt"><a class="darkmode switch"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-deng1"></use></svg><span id="darkmode-switch"> 关灯</span></a></div><div id="toggle-menu"><a class="site-page"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-mulu"></use></svg></a></div></div></div></nav></header><main class="layout hide-aside" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">Oracle存储桶当图床用</h1><div id="post-meta"><div class="tag-cloud-list is-center"><a href="/tags/oracle-cloud/" style="font-size: 1.5em; color: rgb(85, 107, 31)">oracle cloud</a></div><div class="meta-firstline"><span class="post-meta-date"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-rili"></use></svg><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-11-27T05:11:17.474Z" title="发表于 2022-11-27 05:11:17">2022-11-27</time><span class="post-meta-separator">|</span><svg class="icon" aria-hidden="true"><use xlink:href="#icon-shijian"></use></svg><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-11-27T05:11:17.474Z" title="更新于 2022-11-27 05:11:17">2022-11-27</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><svg class="icon" aria-hidden="true"><use xlink:href="#icon-fenlei1"></use></svg><a class="post-meta-categories" href="/categories/oracle-cloud/">oracle cloud</a></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>3分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Oracle存储桶当图床用"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div><div class="line"> <svg class="icon" aria-hidden="true"><use xlink:href="#icon-xigua2"></use></svg><svg class="icon" aria-hidden="true"><use xlink:href="#icon-xigua2"></use></svg><svg class="icon" aria-hidden="true"><use xlink:href="#icon-xigua2"></use></svg><svg class="icon" aria-hidden="true"><use xlink:href="#icon-xigua2"></use></svg><svg class="icon" aria-hidden="true"><use xlink:href="#icon-xigua2"></use></svg></div></div></div><article class="post-content" id="article-container"><p><img src="https://objectstorage.ap-tokyo-1.oraclecloud.com/n/nrij9siyrqif/b/bucket-20220219-2216/o/2022/04/17f78d146b2e6617ac2681680f80ae95.png" alt="通过s3协议，把Oracle存储桶当图床用"></p>
+<h1 id="通过s3协议，把Oracle存储桶当图床用"><a href="#通过s3协议，把Oracle存储桶当图床用" class="headerlink" title="通过s3协议，把Oracle存储桶当图床用"></a>通过s3协议，把Oracle存储桶当图床用</h1><p>转载自：<a target="_blank" rel="noopener" href="https://blog.dominoh.com/ac0b3131.html">https://blog.dominoh.com/ac0b3131.html</a></p>
+<p><del>想必大家手里都或多或少有几个甲骨文云的账号</del>，那么，除了免费的三台鸡，还能怎么充分利用甲骨文的其它免费服务呢？咱们今天把甲骨文免费的10G对象存储榨干x</p>
+<p>我目前用<a target="_blank" rel="noopener" href="https://github.com/Molunerfinn/PicGo">PicGo</a>作为日常使用的图床客户端，同时博客写作时还会用到<a target="_blank" rel="noopener" href="https://github.com/Qexo/Qexo">Qexo</a>，因此也配置了S3的上传。这篇文章就以这两个项目的S3协议配置作为例子，抛砖引玉讲讲如何把甲骨文云的对象存储当图床用。</p>
+<p>这篇文章的封面与所有配图均储存在甲骨文云对象存储中</p>
+<hr>
+<h2 id="创建存储桶"><a href="#创建存储桶" class="headerlink" title="创建存储桶"></a>创建存储桶</h2><p>无论我们想怎么连接到存储桶，首先我们需要先有一个，所以咱们先去创建一个甲骨文的对象存储，并准备好之后需要用到的信息。</p>
+<ol>
+<li>进入甲骨文控制台。首先点击<code>左上角-存储-存储桶</code><br><a target="_blank" rel="noopener" href="https://objectstorage.ap-tokyo-1.oraclecloud.com/n/nrij9siyrqif/b/bucket-20220219-2216/o/2022/04/1afff0c813c99bbddb9e3ee6a30ca14d.png"><img src="https://objectstorage.ap-tokyo-1.oraclecloud.com/n/nrij9siyrqif/b/bucket-20220219-2216/o/2022/04/1afff0c813c99bbddb9e3ee6a30ca14d.png" alt="img"></a></li>
+<li>点击<code>创建存储桶</code>，给你的图床空间起一个好记的名字（其实无所谓x），然后点击<code>创建</code>，Oracle存储桶的免费空间有20G，理论上作为图床是足够用了吧<br><a target="_blank" rel="noopener" href="https://objectstorage.ap-tokyo-1.oraclecloud.com/n/nrij9siyrqif/b/bucket-20220219-2216/o/2022/04/632a98db7d068e0471de4869138afa36.png"><img src="https://objectstorage.ap-tokyo-1.oraclecloud.com/n/nrij9siyrqif/b/bucket-20220219-2216/o/2022/04/632a98db7d068e0471de4869138afa36.png" alt="img"></a></li>
+<li>存储桶建好了，接下来我们去记录一下<code>namespace</code>和<code>region</code>。首先点击右上角的用户图标，然后选择<code>租户:xxxxx</code><br><a target="_blank" rel="noopener" href="https://objectstorage.ap-tokyo-1.oraclecloud.com/n/nrij9siyrqif/b/bucket-20220219-2216/o/2022/04/7b63c069993a567b24cd686eced9406f.png"><img src="https://objectstorage.ap-tokyo-1.oraclecloud.com/n/nrij9siyrqif/b/bucket-20220219-2216/o/2022/04/7b63c069993a567b24cd686eced9406f.png" alt="img"></a></li>
+<li>进入租户详细信息页面后，在框出来的地方有一个<code>对象存储名称空间</code>，这个就是<code>namespace</code>了，把它记下来<br><a target="_blank" rel="noopener" href="https://objectstorage.ap-tokyo-1.oraclecloud.com/n/nrij9siyrqif/b/bucket-20220219-2216/o/2022/04/ed2b9d89a804b575734d7baaab185c0b.png"><img src="https://objectstorage.ap-tokyo-1.oraclecloud.com/n/nrij9siyrqif/b/bucket-20220219-2216/o/2022/04/ed2b9d89a804b575734d7baaab185c0b.png" alt="img"></a></li>
+<li>然后抬头看地址栏，<code>region=</code>后面的部分就是你的<code>region</code>了，把它也记下来<br><a target="_blank" rel="noopener" href="https://objectstorage.ap-tokyo-1.oraclecloud.com/n/nrij9siyrqif/b/bucket-20220219-2216/o/2022/04/2cac0fa236d2ba3d7acdcaed72330a9f.png"><img src="https://objectstorage.ap-tokyo-1.oraclecloud.com/n/nrij9siyrqif/b/bucket-20220219-2216/o/2022/04/2cac0fa236d2ba3d7acdcaed72330a9f.png" alt="img"></a></li>
+<li>完成大半啦！接下来回到右上角，这次点击<code>我的概要信息</code>，英文界面的话是<code>User Settings</code><br><a target="_blank" rel="noopener" href="https://objectstorage.ap-tokyo-1.oraclecloud.com/n/nrij9siyrqif/b/bucket-20220219-2216/o/2022/04/b63fe428d89ca442c3e2fe27cf6108ed.png"><img src="https://objectstorage.ap-tokyo-1.oraclecloud.com/n/nrij9siyrqif/b/bucket-20220219-2216/o/2022/04/b63fe428d89ca442c3e2fe27cf6108ed.png" alt="img"></a></li>
+<li>在左侧找到<code>资源</code>-<code>客户密钥</code>，英文下是<code>Customer secret keys</code><br><a target="_blank" rel="noopener" href="https://objectstorage.ap-tokyo-1.oraclecloud.com/n/nrij9siyrqif/b/bucket-20220219-2216/o/2022/04/2350e901aaccdcdf9fb19f1ed81f7d5a.png"><img src="https://objectstorage.ap-tokyo-1.oraclecloud.com/n/nrij9siyrqif/b/bucket-20220219-2216/o/2022/04/2350e901aaccdcdf9fb19f1ed81f7d5a.png" alt="img"></a></li>
+<li>点击生成密钥，起一个名字<br><a target="_blank" rel="noopener" href="https://objectstorage.ap-tokyo-1.oraclecloud.com/n/nrij9siyrqif/b/bucket-20220219-2216/o/2022/04/31307023472beaa7fa19beaedb844290.png"><img src="https://objectstorage.ap-tokyo-1.oraclecloud.com/n/nrij9siyrqif/b/bucket-20220219-2216/o/2022/04/31307023472beaa7fa19beaedb844290.png" alt="img"></a></li>
+<li>把生成的密钥复制下来记好，这个只会显示一次，别弄丢了<br><a target="_blank" rel="noopener" href="https://objectstorage.ap-tokyo-1.oraclecloud.com/n/nrij9siyrqif/b/bucket-20220219-2216/o/2022/04/3bbb65c38a2133c2efe01d38031a7604.png"><img src="https://objectstorage.ap-tokyo-1.oraclecloud.com/n/nrij9siyrqif/b/bucket-20220219-2216/o/2022/04/3bbb65c38a2133c2efe01d38031a7604.png" alt="img"></a></li>
+<li>于是我们就能在列表里看到密钥了，鼠标放在访问密钥上会显示完整内容<br><a target="_blank" rel="noopener" href="https://objectstorage.ap-tokyo-1.oraclecloud.com/n/nrij9siyrqif/b/bucket-20220219-2216/o/2022/04/e035eff2fb7af0485c7ac5e88a6acc46.png"><img src="https://objectstorage.ap-tokyo-1.oraclecloud.com/n/nrij9siyrqif/b/bucket-20220219-2216/o/2022/04/e035eff2fb7af0485c7ac5e88a6acc46.png" alt="img"></a></li>
+</ol>
+<p>到这里，我们就已经完成了甲骨文的配置啦！<br>接下来把它和我们的图床项目对接吧——</p>
+<hr>
+<h2 id="PicGo"><a href="#PicGo" class="headerlink" title="PicGo"></a>PicGo</h2><ol>
+<li><p>安装好PicGo后，在</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">插件设置</span><br></pre></td></tr></table></figure>
+<p>中搜索</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">s3</span><br></pre></td></tr></table></figure>
+<p>并安装s3协议插件。</p>
+<p><img src="https://objectstorage.ap-tokyo-1.oraclecloud.com/n/nrij9siyrqif/b/bucket-20220219-2216/o/2022/04/49a01481b4225fa4fdc0e2e69b49fdd2.png" alt="我用的是框里的这个，第一个没试，应该也行？"></p>
+<p>我用的是框里的这个，第一个没试，应该也行？</p>
+</li>
+<li><p>点击<code>图床设置-AmazonS3</code>，我们会看到很多很多需要填写的东西<br><a target="_blank" rel="noopener" href="https://objectstorage.ap-tokyo-1.oraclecloud.com/n/nrij9siyrqif/b/bucket-20220219-2216/o/2022/04/9cfe01532fd84826e04b3d6c14d4e78d.png"><img src="https://objectstorage.ap-tokyo-1.oraclecloud.com/n/nrij9siyrqif/b/bucket-20220219-2216/o/2022/04/9cfe01532fd84826e04b3d6c14d4e78d.png" alt="img"></a></p>
+</li>
+<li><p>首先看<code>应用密钥ID</code>和<code>密钥</code>，密钥ID是刚才最后一步在列表中看到的那一串字符；密钥是倒数第二步中<strong>只显示一次</strong>的那一串字符。把它们俩分别拷贝进输入框中</p>
+</li>
+<li><p>然后是<code>桶</code>，这里填甲骨文对象存储桶的名字，也就是第2步中创建的名称。如果忘记的话，可以在左上角<a target="_blank" rel="noopener" href="https://cloud.oracle.com/object-storage/buckets">存储-存储桶</a>中的列表里找到。</p>
+</li>
+<li><p>接下来是<code>文件路径</code>，这里的参数决定了你的图片会被上传到什么目录下。有一些变量可以用，比如<strong>想存到<code>年/月</code>目录下并以<code>md5</code>命名</strong>的话，就可以填写<code>&#123;year&#125;/&#123;month&#125;/&#123;md5&#125;.&#123;extName&#125;</code>，最后一个参数是扩展名，这里抛砖引玉，各位按需填写</p>
+</li>
+<li><p>权限填<code>public-read</code>就可以了，公开可读</p>
+</li>
+<li><p>地区暂时不填，咱们在下面填参数</p>
+</li>
+<li><p>自定义节点，这里填得麻烦一点点</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">自定义节点</span><br><span class="line"></span><br><span class="line">https:&#x2F;&#x2F;[namespace].compat.objectstorage.[region].oraclecloud.com&#x2F;</span><br></pre></td></tr></table></figure>
+<p>不要照抄，这里两个中括号中的内容是需要替换的，<code>namespace</code>和<code>region</code>想必大家还有印象，就是上面第三步中找到的两串字符，把它们替换进去</p>
+<ol>
+<li>自定义域名，这里同样需要有需要替换的部分。<code>region</code>和<code>namespace</code>和上面一样，<code>bucketname</code>是桶名，第1步里那一个</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">自定义域名</span><br><span class="line"></span><br><span class="line">https:&#x2F;&#x2F;objectstorage.[region].oraclecloud.com&#x2F;n&#x2F;[namespace]]&#x2F;b&#x2F;[bucketname]&#x2F;o</span><br></pre></td></tr></table></figure>
+<ol>
+<li>点击确认，现在可以去上传区试着上传一张图片看看啦~<br><a target="_blank" rel="noopener" href="https://objectstorage.ap-tokyo-1.oraclecloud.com/n/nrij9siyrqif/b/bucket-20220219-2216/o/2022/04/0147fe846582f97fef6d28250fb62b35.png"><img src="https://objectstorage.ap-tokyo-1.oraclecloud.com/n/nrij9siyrqif/b/bucket-20220219-2216/o/2022/04/0147fe846582f97fef6d28250fb62b35.png" alt="img"></a></li>
+</ol>
+<hr>
+<h2 id="Qexo"><a href="#Qexo" class="headerlink" title="Qexo"></a>Qexo</h2><p>搭建好Qexo后，在设置中找到<code>图床配置</code>，<code>图床类型</code>选择S3协议后，便能看到相关的配置项了<br><a target="_blank" rel="noopener" href="https://objectstorage.ap-tokyo-1.oraclecloud.com/n/nrij9siyrqif/b/bucket-20220219-2216/o/2022/04/6fe3193ce5ed897bd8dd2435ce0f040c.png"><img src="https://objectstorage.ap-tokyo-1.oraclecloud.com/n/nrij9siyrqif/b/bucket-20220219-2216/o/2022/04/6fe3193ce5ed897bd8dd2435ce0f040c.png" alt="img"></a><br>这里的各项可以参考上面PicGo的配置，大同小异对应填好后提交保存就可以啦——</p>
+</article><div class="post-copyright"><div class="post-copyright__title"><span class="post-copyright-info"><h>Oracle存储桶当图床用</h></span></div><div class="post-copyright__type"><span class="post-copyright-info"><a href="https://szsyzx.github.io/32024.html">https://szsyzx.github.io/32024.html</a></span></div><div class="post-copyright-m"><div class="post-copyright-m-info"><div class="post-copyright-a"><h>作者</h><div class="post-copyright-cc-info"><h>𝓨𝓾𝔂𝓪𝓷</h></div></div><div class="post-copyright-c"><h>发布于</h><div class="post-copyright-cc-info"><h>2022-11-27</h></div></div><div class="post-copyright-u"><h>更新于</h><div class="post-copyright-cc-info"><h>2022-11-27</h></div></div><div class="post-copyright-c"><h>许可协议</h><div class="post-copyright-cc-info"><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a rel="noopener" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></div></div></div></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/oracle-cloud/">oracle cloud</a></div><div class="post_share"><div class="social-share" data-image="https://imgsrc.baidu.com/super/pic/item/8701a18b87d6277f0aa839e66d381f30e824fcb2.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdnjs.sourcegcdn.com/ajax/libs/social-share.js/1.0.16/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdnjs.sourcegcdn.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js" defer></script></div></div><div class="relatedPosts"><div class="headline is-center"><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/61320.html" title="甲骨文实例抢购教程"><img class="cover" src="https://imgsrc.baidu.com/super/pic/item/19d8bc3eb13533fa855cc2f0edd3fd1f40345b01.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2022-10-05</div><div class="title">甲骨文实例抢购教程</div></div></a></div><div><a href="/2851.html" title="甲骨文账号存活情况检测机器人"><img class="cover" src="https://imgsrc.baidu.com/super/pic/item/28381f30e924b899ed70d8e72b061d950b7bf6a5.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2022-10-05</div><div class="title">甲骨文账号存活情况检测机器人</div></div></a></div></div></div><div id="post-comment"><div class="comment-head is-center"><div class="comment-headline"><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div></main><footer id="footer"><div class="wordcount"><span>本站更新了 33.3k 字</span></br><span>还在努力更新中.. 加油！加油啦！</span></div><div class="footer-content"><a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span style="padding: 0.4rem">hexo</span></a><a><i class="fas fa-heart"></i></a><a href="https://butterfly.js.org/" target="_blank" rel="nofollow noopener"><span style="padding: 0.4rem">butterfly</span></a><div style="font-size: 0.7rem"><span id="timeDate">载入天数...</span><span> </span><span id="times">载入时分秒...</span><script src="/js/add/duration.js"></script></div></div><div class="statistics"><span id="site_uv">有 <span id="busuanzi_value_site_uv"></span><span> 人光顾过我的小窝</span></span><span id="site_pv"><span>共 </span><span id="busuanzi_value_site_pv"></span><span> 次在这里摘了个瓜</span></span></div></footer></div><div id="rightside"><div id="rightside-menu"><div id="rightside-avatar-card"><div class="is-center" id="rightside-avatar"><div class="avatar-img"><img src="https://s2.loli.net/2022/09/05/XIJ8QimgfoG6khP.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"></div><div class="author-info__name">𝓨𝓾𝔂𝓪𝓷</div><div class="author-info__description">欢迎光临小窝！</div></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">55</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">34</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">20</div></a></div></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/szsyzx"><i class="fab fa-github"></i><span> Follow Me</span></a><div class="menu-info-social-icons is-center"><a class="social-icon" href="https://github.com/szsyzx" target="_blank" title="Github"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-github"></use></svg></a><a class="social-icon" href="mailto:szys@outlook.it" target="_blank" title="Email"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-youxiang"></use></svg></a><a class="social-icon" href="https://space.bilibili.com/238053726" target="_blank" title="Bilibili"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-CN_bilibiliB"></use></svg></a><a class="social-icon" href="https://music.163.com/#/user/home?id=3873812910" target="_blank" title="网易云"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-yinle"></use></svg></a><a class="social-icon" href="//rss.xml" target="_blank" title="rss"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-rss"></use></svg></a></div></div><div class="is-center" id="rightside-menus"><button id="rightside-childmenu-contents" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="rightside-childmenu-comment"><a href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a></button><button id="rightside-childmenu-go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button><button id="rightside-childmenu-unfold" type="button" title="展开菜单"><i class="fas fa-angle-up"></i></button><button id="rightside-childmenu-fold" type="button" title="收起菜单"><i class="fas fa-angle-down"></i></button></div></div><div id="rightside-contents"><div class="card-widget" id="card-toc"><div class="item-headline is-center"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%80%9A%E8%BF%87s3%E5%8D%8F%E8%AE%AE%EF%BC%8C%E6%8A%8AOracle%E5%AD%98%E5%82%A8%E6%A1%B6%E5%BD%93%E5%9B%BE%E5%BA%8A%E7%94%A8"><span class="toc-text">通过s3协议，把Oracle存储桶当图床用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%AD%98%E5%82%A8%E6%A1%B6"><span class="toc-text">创建存储桶</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PicGo"><span class="toc-text">PicGo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Qexo"><span class="toc-text">Qexo</span></a></li></ol></li></ol></div></div></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(()=>{
+  const $countDom = document.getElementById('twikoo-count')
+  const init = () => {
+    let initData = {
+      el: '#twikoo-wrap',
+      envId: 'blog-twikoo-5gjox0si204192ef',
+      region: ''
+    }
+
+    if (false) {
+      const otherData = false
+      initData = Object.assign(initData, otherData)
+    }
+    
+    twikoo.init(initData)
+  }
+
+  const getCount = () => {
+    twikoo.getCommentsCount({
+      envId: 'blog-twikoo-5gjox0si204192ef',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      $countDom.innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const loadTwikoo = (bool = false) => {
+    if (typeof twikoo === 'object') {
+      init()
+      bool && $countDom && setTimeout(getCount,0)
+    } else {
+      getScript('https://cdnjs.sourcegcdn.com/ajax/libs/twikoo/1.5.4/twikoo.all.min.js').then(()=> {
+        init()
+        bool && $countDom && setTimeout(getCount,0)
+      })
+    }
+  }
+
+  if ('Twikoo' === 'Twikoo' || !true) {
+    if (true) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo(true)
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><script async src="//at.alicdn.com/t/font_2749059_1lswi5j6yqg.js"></script><script src="/js/add/nav.js"></script><script src="/js/add/rightside.js"></script><script src="https://cdn1.tianli0.top/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script data-pjax>
+  function butterfly_footer_beautify_injector_config(){
+    var parent_div_git = document.getElementById('footer-wrap');
+    var item_html = '<div id="workboard"></div><div id="ghbdages" style="overflow:hidden;max-height:180px;height:auto;text-align:center;margin-top:10px"><div class="swiper-wrapper"><div class="swiper-slide"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" title="博客框架为Hexo_v5.3.0"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&amp;logo=hexo" alt=""/></a><a class="github-badge" target="_blank" href="https://butterfly.js.org/" style="margin-inline:5px" title="主题版本Butterfly_v3.7.0-b2"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&amp;logo=bitdefender" alt=""/></a><a class="github-badge" target="_blank" href="https://www.sourcegcdn.com/" style="margin-inline:5px" title="本站使用Source Global CDN为部分静态资源提供CDN加速"><img src="https://img.shields.io/badge/CDN-sourcegcdn-orange?style=flat&amp;logo=Apache%20RocketMQ" alt=""/></a><a class="github-badge" target="_blank" href="https://www.jsdelivr.com/" style="margin-inline:5px" title="本站使用JsDelivr仅用于访问部分静态资源"><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&amp;logo=jsDelivr" alt=""/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" title="本站项目由Github托管"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&amp;logo=GitHub" alt=""/></a><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&amp;logo=Claris" alt=""/></a></div></div></div><style>a.github-badge:hover:before {display:none}</style>';
+    console.log('已挂载butterfly_footer_beautify')
+    parent_div_git.insertAdjacentHTML("beforeend",item_html)
+    }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_footer_beautify_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_footer_beautify_injector_config();
+  }
+  </script><script async src="https://npm.elemecdn.com/hexo-butterfly-footer-beautify@1.0.0/lib/runtime.js"></script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-footer-beautify/lib/swiperbdage_init_js.min.js"></script><!-- hexo injector body_end end --></body></html>
